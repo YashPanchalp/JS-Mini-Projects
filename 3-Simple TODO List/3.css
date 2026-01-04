@@ -1,0 +1,151 @@
+/* Base styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+/* Animation: Fade slide in from bottom */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation: Colorful underline stroke */
+@keyframes underlineReveal {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Animation: Blink highlight for instructions */
+@keyframes blinkHighlight {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+}
+
+/* Main Title with animated colorful underline */
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+  animation: fadeSlideUp 1s ease forwards;
+  /* Text shadow for depth */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+  max-width: 100%;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(
+    270deg,
+    #ff4e50,
+    #f9d423,
+    #24c6dc,
+    #514a9d,
+    #ff4e50
+  );
+  background-size: 500% 500%;
+  animation: underlineReveal 1.5s ease forwards, rainbowShift 6s linear infinite;
+}
+
+/* Rainbow gradient shift animation */
+@keyframes rainbowShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subheadings styling and blink animation staggered */
+h4 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+  max-width: 400px;
+  text-align: center;
+  color: #eee;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease forwards;
+  animation-fill-mode: forwards;
+  /* Use animation-delay with :nth-child for stagger */
+}
+
+h4:nth-of-type(1) {
+  animation-delay: 1.3s;
+  animation-name: fadeSlideUp, blinkHighlight;
+  animation-duration: 1s, 3s;
+  animation-iteration-count: 1, infinite;
+  animation-timing-function: ease, ease-in-out;
+}
+
+h4:nth-of-type(2) {
+  animation-delay: 1.7s;
+  animation-name: fadeSlideUp, blinkHighlight;
+  animation-duration: 1s, 3s;
+  animation-iteration-count: 1, infinite;
+  animation-timing-function: ease, ease-in-out;
+}
+
+h4:nth-of-type(3) {
+  animation-delay: 2.1s;
+  animation-name: fadeSlideUp, blinkHighlight;
+  animation-duration: 1s, 3s;
+  animation-iteration-count: 1, infinite;
+  animation-timing-function: ease, ease-in-out;
+}
+
+h4:nth-of-type(4) {
+  animation-delay: 2.5s;
+  animation-name: fadeSlideUp, blinkHighlight;
+  animation-duration: 1s, 3s;
+  animation-iteration-count: 1, infinite;
+  animation-timing-function: ease, ease-in-out;
+}
+
+/* Responsive typography */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+    padding: 0 1rem;
+  }
+  h4 {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+}
